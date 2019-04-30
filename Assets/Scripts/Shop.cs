@@ -4,16 +4,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public Cards data;
-    public List<CommandBase> commandCatalog;
+    public List<int> commandCatalog;
 
-    private void Start()
-    {
-        commandCatalog = new List<CommandBase>();
 
-        foreach(CardsData card in data.dataArray)
-        {
-            print(card.Name);
-        }
-    }
 }

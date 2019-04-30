@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Status 
 {
-    private int life;
-    private int money;
+    public int life;
+    public int money;
+    public int happiness;
 }
