@@ -4,30 +4,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     private Status status;
 
-    private List<CommandBase> possessionCommands;
+    private List<int> possessionCommands;
 
-    public void BuyCommand(CommandBase command)
+    public void BuyCommand(CardsData card)
     {
-        possessionCommands.Add(command);
+        possessionCommands.Add(card.Id);
     }
 
-    public void UseCommand(CommandBase command)
+    public void UseCommand(CardsData card)
     {
-        status = command.Effect(status);
-        if (!command.isPermanence)
-        {
-            possessionCommands.Remove(command);
-        }
+
+        status.life += card.Value;
+        status.money -= card.Price;
+
+        //! 消費コマンドかどうか
+        //if (!card)
+        //{
+        //    possessionCommands.Remove(cardId);
+        //}
     }
 
     private void Start()
     {
-        possessionCommands = new List<CommandBase>();
+        possessionCommands = new List<int>();
 
-        foreach(CommandBase command in possessionCommands)
+        foreach(int command in possessionCommands)
         {
             print(command);
         }
