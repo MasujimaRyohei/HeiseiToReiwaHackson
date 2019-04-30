@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 
-[System.Serializable]
-public class CommandBase : MonoBehaviour
+[Serializable]
+public class CommandBase
 {
-    [SerializeField]
+    public string commandName;
     public string description;
-    [SerializeField]
-    public System.Action effect;
+    public virtual Status Effect(Status status)
+    {
+        return status;
+    }
+
+    public bool isPermanence;
 
 }

@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private int life;
-    private int money;
+
+    private Status status;
 
     private List<CommandBase> possessionCommands;
 
     public void BuyCommand(CommandBase command)
     {
         possessionCommands.Add(command);
+    }
+
+    public void UseCommand(CommandBase command)
+    {
+        status = command.Effect(status);
+        if (!command.isPermanence)
+        {
+            possessionCommands.Remove(command);
+        }
     }
 
     private void Start()
