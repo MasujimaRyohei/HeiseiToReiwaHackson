@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public CommandList list;
+    public Cards data;
     public List<CommandBase> commandCatalog;
 
     private void Start()
     {
         commandCatalog = new List<CommandBase>();
 
-        foreach(CommandBase command in list.commands)
+        foreach(CardsData card in data.dataArray)
         {
-            print(command.commandName);
-            print(command.description);
+            print(card.Name);
         }
     }
 }
