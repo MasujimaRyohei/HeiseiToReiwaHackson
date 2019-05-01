@@ -13,7 +13,7 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        string path = "Images/Cards/Card" + data.Id;
+        string path = "Images/Cards/card_" + data.Id;
         Sprite sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
         image.sprite = sprite;
         text.text = data.Description;
@@ -21,7 +21,7 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
-        string path = "Images/Cards/Card" + data.Id;
+        string path = "Images/Cards/card_" + data.Id;
         Sprite sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
         //print(sprite);
         if (data.Id == 0)
