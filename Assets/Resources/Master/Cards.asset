@@ -97,7 +97,7 @@ MonoBehaviour:
     name: "\u30D1\u30F3"
     value: 0
     price: 200
-    description: "\u7247\u624B\u306B\u98DF\u3079\u308C\u308B\u30D1\u30F3\n\u6D88\u5316\u306F"
+    description: "\u7247\u624B\u306B\u98DF\u3079\u308C\u308B\u30D1\u30F3\n\u6D88\u5316\u306F\u65E9\u3044"
     comment: 
   - id: 15
     name: "\u304A\u306B\u304E\u308A"

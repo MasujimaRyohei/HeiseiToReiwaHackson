@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : SingletonMonoBehaviour<Player>
 {
-    private Status status;
+    public Status status;
 
-    private List<int> possessionCommands;
+    public List<CardsData> possessionCommands;
 
     public void BuyCommand(CardsData card)
     {
-        possessionCommands.Add(card.Id);
+        possessionCommands.Add(card);
     }
 
     public void UseCommand(CardsData card)
@@ -20,17 +20,20 @@ public class Player : MonoBehaviour
         status.money -= card.Price;
 
         //! 消費コマンドかどうか
-        //if (!card)
-        //{
-        //    possessionCommands.Remove(cardId);
-        //}
+        if (card.Price!=0)
+        {
+            possessionCommands.Remove(card);
+        }
     }
 
     private void Start()
     {
-        possessionCommands = new List<int>();
+        status = new Status { money = 300000, life = 100 };
+        print("Money:"+status.money);
+        print("Life:"+status.life);
+        possessionCommands = new List<CardsData>();
 
-        foreach(int command in possessionCommands)
+        foreach(CardsData command in possessionCommands)
         {
             print(command);
         }

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,11 @@ public class MessageDialog : SingletonMonoBehaviour<MessageDialog>
         CardsData[] cards = MasterData.instance.cards.dataArray;
         for (int i = 0; i < cards.Length; i++)
         {
+            yield return ShowMessageLikeTypeWriter(cards[i].Name);
+            while (!Input.GetKeyDown(KeyCode.Return))
+            {
+                yield return null;
+            }
             yield return ShowMessageLikeTypeWriter(cards[i].Description);
             while (!Input.GetKeyDown(KeyCode.Return))
             {
