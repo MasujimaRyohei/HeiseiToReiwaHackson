@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CommandPart : MonoBehaviour
+public class CommandPart : PartBase
 {
     Player player;
 
