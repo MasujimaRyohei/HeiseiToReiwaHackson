@@ -26,7 +26,7 @@ public class Player : SingletonMonoBehaviour<Player>
         }
     }
 
-    private void Start()
+    private void Example()
     {
         status = new Status { money = 300000, life = 100 };
         print("Money:"+status.money);

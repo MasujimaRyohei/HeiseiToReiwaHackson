@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Shop : SingletonMonoBehaviour<Shop>
 {
-    public List<int> commandCatalog;
+    public List<CardsData> commandCatalog;
 
-    public int[] RandomShowCommandCatalog(int num)
+    public CardsData[] RandomShowCommandCatalog(int num)
     {
-        int[] temporary = commandCatalog.ToArray();
+        CardsData[] temporary = commandCatalog.ToArray();
         for (int i = 0; i < temporary.Length; i++)
         {
-            int temp = temporary[i];
+            CardsData temp = temporary[i];
             int randomIndex = Random.Range(0, temporary.Length);
             temporary[i] = temporary[randomIndex];
             temporary[randomIndex] = temp;
@@ -19,8 +19,14 @@ public class Shop : SingletonMonoBehaviour<Shop>
         return temporary.Take(num).ToArray();
     }
 
-    private void Start()
+    private void Example()
     {
+        commandCatalog = RandomShowCommandCatalog(4).ToList();
+
+        foreach(CardsData card in commandCatalog)
+        {
+             print("catalog:"+ card.Name);
+        }
         //foreach(int num in RandomShowCommandCatalog(4))
         //{
         //    print("catalog:"+ MasterData.instance.GetCardDataUsingID(num).Name);

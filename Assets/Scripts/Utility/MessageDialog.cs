@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class MessageDialog : SingletonMonoBehaviour<MessageDialog>
 {
-    private IEnumerator Start()
+    private IEnumerator Example()
     {
         imageFinishIndicator.gameObject.SetActive(false);
         CardsData[] cards = MasterData.instance.cards.dataArray;

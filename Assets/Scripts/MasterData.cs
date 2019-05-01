@@ -20,16 +20,16 @@ public class MasterData : SingletonMonoBehaviour<MasterData>
         return null;
     }
 
-    private void Start()    
+    private void Example()    
     {
-        //foreach (CardsData card in cards.dataArray)
-        //{
-        //    print(card.Id + " : " + card.Name);
-        //}
+        foreach (CardsData card in cards.dataArray)
+        {
+            print(card.Id + " : " + card.Name);
+        }
 
-        //foreach (EventsData card in events.dataArray)
-        //{
-        //    print(card.Id + " : " + card.Name);
-        //}
+        foreach (EventsData card in events.dataArray)
+        {
+            print(card.Id + " : " + card.Name);
+        }
     }
 }
