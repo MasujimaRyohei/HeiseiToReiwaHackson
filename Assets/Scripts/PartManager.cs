@@ -19,5 +19,6 @@ public class PartManager : SingletonMonoBehaviour<PartManager>
             currentPart++;
         }
         parts[currentPart].gameObject.SetActive(true);
+        parts[currentPart].Init();
     }
 }

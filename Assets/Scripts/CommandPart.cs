@@ -7,17 +7,25 @@ public class CommandPart : PartBase
 {
     Player player;
 
-    public Card[] cards;
-    public Image[] images;
+    public List<Card> cards = new List<Card>();
 
     public Text text;
 
     public Card selectCard;
 
+    public Transform possessionCardTransform;
+    public Card cardPrefab;
+
     // Start is called before the first frame update
-    void Start()
+    public override void  Init()
     {
         player = Player.Instance;
+        for (int i = 0; i < player.possessionCommands.Count; i++)
+        {
+            Card card = Instantiate(cardPrefab, possessionCardTransform);
+            card.data = player.possessionCommands[i];
+            cards.Add(card);
+        }
     }
 
     // Update is called once per frame
@@ -25,28 +33,35 @@ public class CommandPart : PartBase
     {
         Reload();
 
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < cards.Count; i++)
         {
-            if (images[i].color == Color.gray)
+            if (cards[i] == null)
+            {
+                continue;
+            }
+            if (cards[i].image.color == Color.gray)
             {
                 selectCard = cards[i];
             }
         }
-        if(selectCard!=null)
-        text.text = selectCard.data.Description;
+        if (selectCard != null)
+            text.text = selectCard.data.Description;
     }
 
     public void Reload()
     {
-        for(int i = 0; i < player.possessionCommands.Count; i++)
+        for (int i = 0; i < player.possessionCommands.Count; i++)
         {
-            cards[i].data = player.possessionCommands[i];
+            if (cards[i] != null)
+            {
+                cards[i].data = player.possessionCommands[i];
+            }
         }
     }
 
     public void GoEvent()
     {
-        Debug.Log(selectCard.data.Value);
         player.status.life += selectCard.data.Value;
+        FinishPart();
     }
 }
