@@ -27,7 +27,7 @@ MonoBehaviour:
     isEnable: 0
     isArray: 0
   - type: 3
-    name: value
+    name: life
     isEnable: 0
     isArray: 0
   - type: 3
@@ -36,6 +36,10 @@ MonoBehaviour:
     isArray: 0
   - type: 1
     name: description
+    isEnable: 0
+    isArray: 0
+  - type: 1
+    name: comment
     isEnable: 0
     isArray: 0
   excelFilePath: Assets/Resources/Master/Card.xlsx

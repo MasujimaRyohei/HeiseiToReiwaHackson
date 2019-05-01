@@ -34,7 +34,7 @@ public class Player : SingletonMonoBehaviour<Player>
     public void UseCommand(CardsData card)
     {
 
-        status.life += card.Value;
+        status.life += card.Life;
         status.money -= card.Price;
 
         //! 消費コマンドかどうか

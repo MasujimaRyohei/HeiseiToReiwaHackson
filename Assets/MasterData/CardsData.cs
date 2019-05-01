@@ -17,8 +17,8 @@ public class CardsData
   public string Name { get {return name; } set { name = value;} }
   
   [SerializeField]
-  int value;
-  public int Value { get {return value; } set { value = value;} }
+  int life;
+  public int Life { get {return life; } set { life = value;} }
   
   [SerializeField]
   int price;

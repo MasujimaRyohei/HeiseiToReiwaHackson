@@ -43,12 +43,10 @@ public class Shop : SingletonMonoBehaviour<Shop>
         Player.instance.status.money = 3000;
     }
 
-    private void Update()
+    public void OnClickPurchase()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            StartCoroutine(ConfirmPurchase());
-        }
+        StartCoroutine(ConfirmPurchase());
+
     }
 
     public IEnumerator ConfirmPurchase()

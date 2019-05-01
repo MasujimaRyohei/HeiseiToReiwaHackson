@@ -61,7 +61,8 @@ public class CommandPart : PartBase
 
     public void GoEvent()
     {
-        player.status.life += selectCard.data.Value;
+        player.status.life += selectCard.data.Life;
+        player.status.life= Mathf.Clamp(player.status.life, 0, 100);
         FinishPart();
     }
 }
