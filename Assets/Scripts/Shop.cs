@@ -28,7 +28,7 @@ public class Shop : SingletonMonoBehaviour<Shop>
         return temporary.Take(num).ToArray();
     }
 
-    private void Start()
+    public void Start()
     {
         panelPurchase.gameObject.SetActive(false);
         panelResult.gameObject.SetActive(false);
@@ -77,7 +77,11 @@ public class Shop : SingletonMonoBehaviour<Shop>
 
     private void PurchaseMethod(bool confirm)
     {
-        if(!confirm)
+        foreach (Transform child in confirmViewTransform)
+        {
+            Destroy(child.gameObject);
+        }
+        if (!confirm)
         {
             return;
         }
@@ -94,10 +98,7 @@ public class Shop : SingletonMonoBehaviour<Shop>
                 Player.instance.possessionCommands.Add(purchaseCards[i].data);
             }
             purchaseCards.Clear();
-            foreach(Transform child in confirmViewTransform)
-            {
-                Destroy(child.gameObject);
-            }
+       
         }
         else
         {

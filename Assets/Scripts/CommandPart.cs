@@ -7,7 +7,7 @@ public class CommandPart : PartBase
 {
     Player player;
 
-    public List<Card> cards = new List<Card>();
+    public List<Card> cards;
 
     public Text text;
 
@@ -19,6 +19,11 @@ public class CommandPart : PartBase
     // Start is called before the first frame update
     public override void  Init()
     {
+        cards = new List<Card>();
+        foreach (Transform child in possessionCardTransform)
+        {
+            Destroy(child.gameObject);
+        }
         player = Player.Instance;
         for (int i = 0; i < player.possessionCommands.Count; i++)
         {
@@ -61,8 +66,17 @@ public class CommandPart : PartBase
 
     public void GoEvent()
     {
-        player.status.life += selectCard.data.Life;
-        player.status.life= Mathf.Clamp(player.status.life, 0, 100);
+        if (selectCard)
+        {
+            player.status.life += selectCard.data.Life;
+            player.status.life = Mathf.Clamp(player.status.life, 0, 100);
+        }
+        StartCoroutine(GoEventCoroutine());
+    }
+
+    public IEnumerator GoEventCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
         FinishPart();
     }
 }

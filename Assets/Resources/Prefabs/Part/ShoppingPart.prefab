@@ -1659,7 +1659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c460b3d28edbf9d47b7ecde00c21285e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonFinish: {fileID: 0}
+  confirmPanel: {fileID: 4798639640047295003}
+  resultPanel: {fileID: 7352916370364067066}
 --- !u!1 &8918242213486933322
 GameObject:
   m_ObjectHideFlags: 0

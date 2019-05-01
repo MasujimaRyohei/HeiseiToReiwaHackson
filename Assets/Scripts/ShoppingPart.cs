@@ -5,5 +5,13 @@ using UnityEngine.UI;
 
 public class ShoppingPart : PartBase
 {
-    public Button buttonFinish;
+    public ConfirmPanel confirmPanel;
+    public ResultPanel resultPanel;
+    public override void Init()
+    {
+        confirmPanel.gameObject.SetActive(false);
+        resultPanel.gameObject.SetActive(false);
+
+        Shop.Instance.commandCatalog = new List<Card>();
+    }
 }
