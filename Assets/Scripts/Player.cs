@@ -12,12 +12,12 @@ public class Player : SingletonMonoBehaviour<Player>
 
     public List<CardsData> possessionCommands;
 
-    private void Start()
+    public void Init()
     {
+        possessionCommands = new List<CardsData>();
         possessionCommands.Add(MasterData.instance.GetCardDataUsingID(1));
         possessionCommands.Add(MasterData.instance.GetCardDataUsingID(2));
         status = new Status { money = 300000, life = 50 };
-
     }
 
     private void Update()

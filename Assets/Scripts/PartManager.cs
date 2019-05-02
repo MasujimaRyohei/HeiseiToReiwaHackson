@@ -7,6 +7,11 @@ public class PartManager : SingletonMonoBehaviour<PartManager>
     public PartBase[] parts;
     public int currentPart = 0;
 
+    private void Start()
+    {
+        Player.instance.Init();
+        parts[currentPart].Init();
+    }
     public void NextPart()
     {
         parts[currentPart].gameObject.SetActive(false);

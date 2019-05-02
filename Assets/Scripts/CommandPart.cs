@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class CommandPart : PartBase
 {
-    Player player;
 
-    public List<Card> cards;
+    public List<Card> possessionCommands;
 
     public Text text;
 
@@ -19,17 +18,23 @@ public class CommandPart : PartBase
     // Start is called before the first frame update
     public override void  Init()
     {
-        cards = new List<Card>();
+        base.Init();
+
+        possessionCommands = new List<Card>();
+
+        // TODO : プールしたい
         foreach (Transform child in possessionCardTransform)
         {
             Destroy(child.gameObject);
         }
-        player = Player.Instance;
+
+
         for (int i = 0; i < player.possessionCommands.Count; i++)
         {
             Card card = Instantiate(cardPrefab, possessionCardTransform);
             card.data = player.possessionCommands[i];
-            cards.Add(card);
+            possessionCommands.Add(card);
+
         }
     }
 
@@ -38,15 +43,15 @@ public class CommandPart : PartBase
     {
         Reload();
 
-        for (int i = 0; i < cards.Count; i++)
+        for (int i = 0; i < possessionCommands.Count; i++)
         {
-            if (cards[i] == null)
+            if (possessionCommands[i] == null)
             {
                 continue;
             }
-            if (cards[i].image.color == Color.gray)
+            if (possessionCommands[i].image.color == Color.gray)
             {
-                selectCard = cards[i];
+                selectCard = possessionCommands[i];
             }
         }
         if (selectCard != null)
@@ -57,9 +62,12 @@ public class CommandPart : PartBase
     {
         for (int i = 0; i < player.possessionCommands.Count; i++)
         {
-            if (cards[i] != null)
+            if (possessionCommands.Count > i)
             {
-                cards[i].data = player.possessionCommands[i];
+                if (possessionCommands[i] != null)
+                {
+                    possessionCommands[i].data = player.possessionCommands[i];
+                }
             }
         }
     }
